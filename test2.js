@@ -1,9 +1,17 @@
-let test = [1, 2, 2, 3, 4, 6, 7, 8, 6];
+let test = [9, 8, 1, 2, 2, 3, 4, 2, 6, 7, 9, 8, 6];
 
-console.log(uniq(test));
+console.log(sortArray(test));
 
-function uniq(a) {
-    return a.sort().filter(function(item, pos, ary) {
-        return !pos || item != ary[pos - 1];
-    });
+function sortArray(array) {
+    let seen = {};
+    let out = [];
+    let j = 0;
+    for(let i = 0; i < array.length; i++) {
+        let item = array[i];
+         if(!seen[item]) {
+               seen[item] = item;
+               out[j++] = item;
+         }
+    }
+    return out;
 }
